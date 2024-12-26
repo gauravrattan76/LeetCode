@@ -1,0 +1,40 @@
+
+import java.util.Arrays;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Stack;
+
+public class Main {
+
+    public static int calProfit(int[] p,int min,int md)
+    {
+        int cd = 0;
+        for(int i = 0; i < p.length ; i++)
+        {
+            cd = p[i] -min;
+            if(cd > md)
+            {
+                md = cd;
+            }
+            if(p[i] < min)
+            {
+         min = p[i]  ;
+           }
+        }
+        return md;
+    }
+
+
+    public static void main(String[] args) {
+    int[]  prices = {7,1,5,3,6,4,12};
+    int min = prices[0];
+    int maxDiff = 0;
+     System.out.println(calProfit(prices, min, maxDiff));
+    }
+}
+
+
+
+// Input: prices = [7,1,5,3,6,4]
+//Output: 5
+//Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+//Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.

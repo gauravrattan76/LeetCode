@@ -1,0 +1,47 @@
+3. check if  a number is paindrome or not
+
+
+
+import java.util.Arrays;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Stack;
+
+
+import java.util.Arrays;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Stack;
+
+public class Main {
+
+    public static boolean isPalindrome(int x) {
+        if(x < 0){
+            return false;
+        }
+       int fnum = 0;
+        int temp = x;
+        while(temp!= 0)
+        {
+             int rem = temp % 10;
+             fnum = fnum * 10 + rem;
+             temp = temp / 10;
+        }
+        boolean res = fnum == x ? true : false;
+   return res;
+    }
+
+    public static void main(String[] args) {
+        int num = 1441;
+       boolean res = isPalindrome(num);
+        System.out.println(res);
+    }
+}
+
+
+
+
+
+
+
+
+
+

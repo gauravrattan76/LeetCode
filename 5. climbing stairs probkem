@@ -1,0 +1,30 @@
+
+import java.util.Arrays;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Stack;
+
+public class Main {
+
+    public static int numberWays(int a)
+    {
+        if(a <= 1)
+        {
+            return 1;
+        }
+       int ways =   numberWays(a-1) + numberWays(a-2);
+     return ways;
+    }
+
+
+    public static void main(String[] args) {
+       int num = 3;
+   System.out.println(numberWays(num));
+
+
+    }
+}
+
+
+
+
+2^n complexty need to find better solution

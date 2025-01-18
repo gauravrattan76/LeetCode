@@ -1,0 +1,108 @@
+Duplicate in array -
+
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+ static boolean duplicate(int[] arr)
+ {
+     for(int i = 0; i < arr.length-1; i++)
+     {
+         for(int j = i+ 1; j < arr.length ; j++)
+         {
+            if(arr[i] == arr[j]){
+                return true;
+            }
+         }
+
+     }
+     return false;
+
+ }
+
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4};
+
+      boolean bool = duplicate(arr);
+      System.out.println(bool);
+    }
+}
+
+
+Time complexity is O(n^2)
+____________________
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+ static boolean duplicate(int[] arr)
+ {
+     Arrays.sort(arr);
+     for(int i = 0; i < arr.length-1;i ++)
+     {
+         if(arr[i] == arr[i+1]){
+             return true;
+         }
+     }
+     return false;
+
+ }
+
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,22,11,3,4,1};
+
+
+      boolean bool = duplicate(arr);
+      System.out.println(bool);
+    }
+}
+
+
+Sort and then check 
+
+Complicity is nlog(n)
+
+
+______________________
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+ static boolean duplicate(int[] arr)
+ {
+     HashMap<Integer,Integer> map =new HashMap<>();
+    for(int i =  0; i < arr.length ; i++)
+    {
+        if(map.containsKey(arr[i]))
+        {
+            return true;
+        }
+        map.put(arr[i], i);
+
+    }
+return false;
+ }
+
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,22,11,3,4,1};
+
+
+      boolean bool = duplicate(arr);
+      System.out.println(bool);
+    }
+}
+
+
+In liner time complexity

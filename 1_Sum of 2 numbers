@@ -16,6 +16,43 @@ class Solution {
         return new int[]{};
     }
 }
+complexty O(n^2)
+
+____________
+
+using hashmap
+
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    static int[] twoSum(int[] arr, int k){
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+       for(int i = 0; i < arr.length; i++){
+           int diff = k - arr[i];
+           if(map.containsKey(arr[i])){
+               return new int[] {map.get(arr[i]), arr[i]};
+           }
+           else {
+               map.put(diff, arr[i]);
+           }
+        }
+return new int[]{};
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {2, 3, 7, 11, 22};
+        int k = 9;
+        int[] d = twoSum(arr, k);
+        System.out.println(Arrays.toString(d));
+    }
+}
+
+
 
 
 

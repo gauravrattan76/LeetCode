@@ -1,0 +1,84 @@
+Given an array of coins[] of size n and a target value sum, where coins[i] represent the coins of different denominations. You have an infinite supply of each of the coins. The task is to find the minimum number of coins required to make the given value sum. If it’s not possible to make a change, return -1.
+
+Examples:  
+
+Input: coins[] = [25, 10, 5], sum = 30
+Output: 2
+Explanation : Minimum 2 coins needed, 25 and 5  
+
+
+
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static int minCoins(int[] coins,int val){
+        // create a dp with size val + 1 as we need to accumulate 0;
+          int[] dp = new int[val +1];
+
+          // fill them with max value
+        Arrays.fill(dp,Integer.MAX_VALUE);
+
+        // 0 coins for 0 coins
+        dp[0] = 0;
+
+
+        // create a dp
+          for(int i = 1; i <= val ; i++)
+          {
+              for(int coin : coins)
+              {
+                  if(i >= coin)
+                  {
+                     dp[i] = Math.min(dp[i], dp[i-coin] + 1);
+                  }
+              }
+          }
+
+          return dp[val] == Integer.MAX_VALUE ? -1 : dp[val];
+    }
+
+    public static void main(String[] args) {
+
+       int[] coins = {1,5,7};
+       int sum = 19;
+          int res = minCoins(coins, sum);
+    System.out.println("result coins is"+ res);
+
+    }
+}
+
+
+
+
+__________-
+
+javascript code
+
+const coins = [1,5,7]
+
+let sum = 12;
+
+
+function findMinCoin(coins, num)
+{
+    const dp = new Array(num + 1).fill(Number.MAX_VALUE);
+    dp[0]= 0;
+
+    for(let i = 1; i <= num ; i++)
+    {
+        
+        coins.forEach(coin =>{
+            if(i >=coin){
+            dp[i] =Math.min(dp[i], dp[i - coin] + 1 )
+            }
+        })
+    }
+
+    return dp[num] === Number.MAX_VALUE ? -1 : dp[num]
+}
+
+
+console.log(findMinCoin(coins, sum))

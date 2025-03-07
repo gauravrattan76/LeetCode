@@ -1,0 +1,52 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static int waterTrap(int[] arr){
+        int n = arr.length;
+
+        // array to track max item on left
+        int[] left  = new int[n];
+
+        // array to track max item on right
+        int[] right = new int[n];
+
+        left[0] = arr[0];
+        right[n-1] = arr[n-1];
+        int res = 0;
+
+        // fill left array with max of i-1 and i
+        for(int i = 1; i< n; i++)
+        {
+            left[i] = Math.max(left[i-1],arr[i]);
+        }
+        for(int j = n-2; j>=0; j--)
+        {
+            right[j] = Math.max(right[j+1],arr[j]);
+        }
+
+        // check for each item if l-1 and r+1 whih is min and then see if its greater thab the curr then only add sum
+        for(int i = 1; i < n-1; i++)
+        {
+            int val = Math.min(left[i-1], right[i+1]);
+            if(val > arr[i])
+            {
+                res += val-arr[i];
+            }
+
+
+        }
+        return res;
+
+    }
+
+    public static void main(String[] args) {
+
+       int[] coins = {2, 1, 5, 3, 1, 0, 4};
+       int res = waterTrap(coins);
+    System.out.println("result coins is"+ res);
+    }
+}
+

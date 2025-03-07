@@ -8,38 +8,27 @@ public class Main {
        int[] firstIncl = new int[arr.length-1];
         int[] lastIncl = new int[arr.length-1];
 
-        firstIncl[0] = arr[0];
-        lastIncl[0] = arr[1];
-        for(int i = 1; i < arr.length-1 ; i++)
+        for(int i = 0; i < arr.length-1 ; i++)
         {
             firstIncl[i] = arr[i];
             lastIncl[i] = arr[i+1];
         }
-
-        int[] dp = new int[firstIncl.length];
-        dp[0] = firstIncl[0];
-        dp[1] = Math.max(dp[0], firstIncl[1]);
-
-
-        for(int i =2; i < firstIncl.length ; i++)
-        {
-            dp[i] = Math.max(dp[i-2]+ firstIncl[i], dp[i-1]);
-        }
-        int sum1 = dp[firstIncl.length-1];
-
-        int[] dp1 = new int[lastIncl.length];
-        dp1[0] = lastIncl[0];
-        dp1[1] = Math.max(dp1[0], lastIncl[1]);
-
-        for(int i =2; i < lastIncl.length ; i++)
-        {
-            dp[i] = Math.max(dp1[i-2]+ lastIncl[i], dp1[i-1]);
-        }
-        int sum2 = dp1[lastIncl.length-1];
-
+        int sum1 = returnSum(firstIncl);
+        int sum2 = returnSum(lastIncl);
         return Math.max(sum2, sum1);
+    }
 
+    public static int returnSum(int[] arr)
+    {
+        int[] dp1 = new int[arr.length];
+        dp1[0] = arr[0];
+        dp1[1] = Math.max(dp1[0], arr[1]);
 
+        for(int i =2; i < arr.length ; i++)
+        {
+            dp1[i] = Math.max(dp1[i-2]+ arr[i], dp1[i-1]);
+        }
+        return dp1[arr.length-1];
     }
 
     public static void main(String[] args) {

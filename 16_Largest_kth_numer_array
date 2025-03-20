@@ -25,3 +25,40 @@ public class Main {
        System.out.println("largest val is" + r);
     }
 }
+
+
+__________
+
+
+alternate -
+
+import java.util.PriorityQueue;
+
+public class Main {
+
+    public static int returnNum(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for (int num : nums) {
+            if (pq.size() < k) {
+                pq.add(num);
+            } else {
+                if (num > pq.peek()) {
+                    pq.poll();
+                    pq.add(num);
+                }
+            }
+        }
+        return pq.poll();
+
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums = {13, 1, 12, 4, 6, 8, 2, 9, 11, 3};
+        int k = 3;
+        int res = returnNum(nums, k);
+        System.out.println("resut is" + res);
+
+    }
+}

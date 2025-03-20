@@ -1,0 +1,27 @@
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static int topEl(int[] nums, int k)
+    {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for(int n : nums)
+        {
+            pq.offer(n);
+            if(pq.size() > k)
+            {
+                pq.poll();
+            }
+        }
+        return pq.peek();
+
+    }
+
+    public static void main(String[] args) {
+       int[] nums ={5,4,3,2,1};
+       int k = 3;
+//       int[] val = topEl(nums, k);
+       int r =  topEl(nums, k);
+       System.out.println("largest val is" + r);
+    }
+}

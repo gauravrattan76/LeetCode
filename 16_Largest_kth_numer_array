@@ -1,3 +1,7 @@
+space complexty is- O(k) as need to store k elemen ts in array
+
+tim eco,plsty is n * log(k)
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
